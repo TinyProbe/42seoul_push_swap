@@ -4,8 +4,12 @@ CC			= cc
 CFLAG		= -Wall -Wextra -Werror
 OBJFLAG		= -c
 SRC_M		= pwap.c		\
+			  pwap2.c		\
+			  valid.c		\
+			  list.c		\
+			  utils.c		\
 
-SRC_B		= check.c		\
+SRC_B		= checker.c		\
 
 OBJ_M		= $(SRC_M:.c=.o)
 OBJ_B		= $(SRC_B:.c=.o)
