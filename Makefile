@@ -3,11 +3,15 @@ BONUS		= checker
 CC			= cc
 CFLAG		= -Wall -Wextra -Werror
 OBJFLAG		= -c
-SRC_M		= pwap.c		\
-			  pwap2.c		\
-			  valid.c		\
+SRC_M		= command.c		\
+			  command2.c	\
 			  list.c		\
+			  list2.c		\
+			  pwap.c		\
+			  pwap2.c		\
+			  sort.c		\
 			  utils.c		\
+			  valid.c		\
 
 SRC_B		= checker.c		\
 

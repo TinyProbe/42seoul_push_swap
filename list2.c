@@ -2,10 +2,10 @@
 
 int	front(t_node **head)
 {
-	(*head)->data;
+	return ((*head)->data);
 }
 
 int	back(t_node **head)
 {
-	(*head)->left->data;
+	return ((*head)->left->data);
 }

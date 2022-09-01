@@ -7,15 +7,12 @@
 # define MAX_LEN	1000000
 # define SA			1
 # define SB			2
-# define SS			3
-# define PA			4
-# define PB			5
-# define RA			6
-# define RB			7
-# define RR			8
-# define RRA		9
-# define RRB		10
-# define RRR		11
+# define PA			3
+# define PB			4
+# define RA			5
+# define RB			6
+# define RRA		7
+# define RRB		8
 
 typedef struct s_node
 {
@@ -60,5 +57,8 @@ int		_memcmp(const void *s1, const void *s2, size_t n);
 int		_stoi(const char *s);
 void	_sort(int *arr, int n);
 void	_swap(int *a, int *b);
+int		is_sorted(t_ds *store);
+int		is_exist(t_ds *store);
+void	push_a_auto(t_ds *store);
 
 #endif
