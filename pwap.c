@@ -34,7 +34,10 @@ static int	extract(int argc, char **argv, t_ds *store)
 
 static void	sort(t_ds *store)
 {
+	while (!is_sorted(store))
+	{
 
+	}
 }
 
 static void print(t_ds *store, int i)
