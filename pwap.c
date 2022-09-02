@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	sort(&store);
-	print(&store, -1);
+	print(&store);
 	release(&store);
 	return (0);
 }
@@ -44,6 +44,7 @@ static void	sort(t_ds *store)
 		else
 			rotate_a(store);
 	}
+	compress(store, 0, -1, 0);
 }
 
 static void print(t_ds *store)

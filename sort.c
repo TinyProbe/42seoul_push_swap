@@ -1,5 +1,7 @@
 #include "pwap.h"
 
+static int	pay_back(t_ds *store, int len_a, int cur, int j);
+
 int	is_sorted(t_ds *store)
 {
 	t_node	*cur;
@@ -41,4 +43,43 @@ int	is_exist(t_ds *store)
 void	push_a_auto(t_ds *store)
 {
 
+}
+
+void	compress(t_ds *store, int cur, int i, int j)
+{
+	int	len_a;
+
+	len_a = store->len_a;
+	while (++i <= store->len_cmd)
+	{
+		if (i == store->len_cmd)
+			j = pay_back(store, len_a, cur, j);
+		else if (store->cmd[i] != RA)
+		{
+			j = pay_back(store, len_a, cur, j);
+			cur = 0;
+			if (store->cmd[i] == PA)
+				len_a += 1;
+			else if (store->cmd[i] == PB)
+				len_a -= 1;
+			store->cmd[j++] = store->cmd[i];
+		}
+		else
+			cur += 1;
+	}
+	store->len_cmd = j;
+}
+
+static int	pay_back(t_ds *store, int len_a, int cur, int j)
+{
+	int	i;
+
+	i = -1;
+	if (len_a - cur < cur)
+		while (++i < len_a - cur)
+			store->cmd[j++] = RRA;
+	else
+		while (++i < cur)
+			store->cmd[j++] = RA;
+	return (j);
 }

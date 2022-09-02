@@ -60,5 +60,6 @@ void	_swap(int *a, int *b);
 int		is_sorted(t_ds *store);
 int		is_exist(t_ds *store);
 void	push_a_auto(t_ds *store);
+void	compress(t_ds *store, int cur, int i, int j);
 
 #endif
