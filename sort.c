@@ -42,7 +42,8 @@ int	is_exist(t_ds *store)
 
 void	push_a_auto(t_ds *store)
 {
-
+	// get range between front to back of a.
+	// get direction that best performance. or find a machanism.
 }
 
 void	compress(t_ds *store, int cur, int i, int j)
