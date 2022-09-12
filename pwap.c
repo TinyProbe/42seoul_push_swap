@@ -40,7 +40,7 @@ static void	sort(t_ds *store)
 				&& back(&(store->a)) > front(&(store->a)))
 			push_b(store);
 		else if (is_exist(store))
-			push_a_auto(store);
+			push_auto(store);
 		else
 			rotate_a(store);
 	}

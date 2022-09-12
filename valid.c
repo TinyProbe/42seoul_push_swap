@@ -8,9 +8,7 @@ int	valid1(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
-		j = 0;
-		if (argv[i][j] != '-')
-			--j;
+		j = -(argv[i][j] != '-');
 		while (argv[i][++j])
 			if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (0);
@@ -32,7 +30,7 @@ int	valid1_1(char *s)
 		rng = "2147483648";
 	}
 	len = _strlen(s);
-	if ((len > 10) || (len == 10 && _memcmp(s, rng, 10) > 0))
+	if (len > 10 || (len == 10 && _memcmp(s, rng, 10) > 0))
 		return (0);
 	return (1);
 }
