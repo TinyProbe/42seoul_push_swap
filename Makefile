@@ -3,17 +3,18 @@ BONUS		= checker
 CC			= cc
 CFLAG		= -Wall -Wextra -Werror
 OBJFLAG		= -c
-SRC_M		= command.c		\
-			  command2.c	\
-			  list.c		\
-			  list2.c		\
-			  pwap.c		\
-			  pwap2.c		\
-			  sort.c		\
-			  utils.c		\
-			  valid.c		\
+SRC_M		= command.c			\
+			  command2.c		\
+			  compress.c		\
+			  list.c			\
+			  list2.c			\
+			  pwap.c			\
+			  pwap2.c			\
+			  sort.c			\
+			  utils.c			\
+			  valid.c			\
 
-SRC_B		= checker.c		\
+SRC_B		= checker_bonus.c	\
 
 OBJ_M		= $(SRC_M:.c=.o)
 OBJ_B		= $(SRC_B:.c=.o)

@@ -36,15 +36,16 @@ static void	sort(t_ds *store)
 {
 	while (!is_sorted(store))
 	{
-		if (back(&(store->a)) != store->arr[store->len_arr - 1]
-				&& back(&(store->a)) > front(&(store->a)))
+		if (back(store->a) != store->arr[store->len_arr - 1]
+				&& back(store->a) > front(store->a))
 			push_b(store);
 		else if (is_exist(store))
 			push_auto(store);
 		else
 			rotate_a(store);
 	}
-	compress(store, 0, -1, 0);
+	compress1(store, 0, -1, 0);
+	compress2(store, 0, -1, 0);
 }
 
 static void print(t_ds *store)

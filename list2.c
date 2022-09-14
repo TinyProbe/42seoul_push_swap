@@ -1,11 +1,11 @@
 #include "pwap.h"
 
-int	front(t_node **head)
+int	front(t_node *head)
 {
-	return ((*head)->data);
+	return (head->data);
 }
 
-int	back(t_node **head)
+int	back(t_node *head)
 {
-	return ((*head)->left->data);
+	return (head->left->data);
 }
