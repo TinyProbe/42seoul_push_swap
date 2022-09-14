@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 {
 	static t_ds	store;
 
-	if (!extract(argc, argv, &store))
+	if (extract(argc, argv, &store))
 	{
 		write(1, "Error\n", 6);
 		release(&store);
@@ -23,13 +23,13 @@ int main(int argc, char **argv)
 
 static int	extract(int argc, char **argv, t_ds *store)
 {
-	if (!valid1(argc, argv))
-		return (0);
+	if (valid1(argc, argv))
+		return (-1);
 	fill_a(argc, argv, store);
 	make_arr(store);
-	if (!valid2(store))
-		return (0);
-	return (1);
+	if (valid2(store))
+		return (-2);
+	return (0);
 }
 
 static void	sort(t_ds *store)
