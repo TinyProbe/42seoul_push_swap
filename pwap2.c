@@ -1,6 +1,6 @@
 #include "pwap.h"
 
-void	fill_a(int argc, char **argv, t_ds *store)
+void	input(int argc, char **argv, t_ds *store)
 {
 	int	i;
 
@@ -11,7 +11,7 @@ void	fill_a(int argc, char **argv, t_ds *store)
 	store->len_arr = argc - 1;
 }
 
-void	make_arr(t_ds *store)
+void	pre_sort(t_ds *store)
 {
 	t_node	*tmp;
 	int		i;

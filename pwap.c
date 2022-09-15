@@ -25,8 +25,8 @@ static int	extract(int argc, char **argv, t_ds *store)
 {
 	if (valid1(argc, argv))
 		return (-1);
-	fill_a(argc, argv, store);
-	make_arr(store);
+	input(argc, argv, store);
+	pre_sort(store);
 	if (valid2(store))
 		return (-2);
 	return (0);
@@ -34,18 +34,9 @@ static int	extract(int argc, char **argv, t_ds *store)
 
 static void	sort(t_ds *store)
 {
-	while (!is_sorted(store))
-	{
-		if (back(store->a) != store->arr[store->len_arr - 1]
-				&& back(store->a) > front(store->a))
-			push_b(store);
-		else if (is_exist(store))
-			push_auto(store);
-		else
-			rotate_a(store);
-	}
-	compress1(store, 0, -1, 0);
-	compress2(store, 0, -1, 0);
+	trim(store);
+	fill(store);
+	compress(store);
 }
 
 static void print(t_ds *store)

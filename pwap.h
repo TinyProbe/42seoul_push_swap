@@ -33,8 +33,8 @@ typedef struct s_ds
 	int		len_cmd;
 }	t_ds;
 
-void	fill_a(int argc, char **argv, t_ds *store);
-void	make_arr(t_ds *store);
+void	input(int argc, char **argv, t_ds *store);
+void	pre_sort(t_ds *store);
 int		valid1(int argc, char **argv);
 int		valid1_1(char *s);
 int		valid2(t_ds *store);
@@ -57,10 +57,8 @@ int		_memcmp(const void *s1, const void *s2, size_t n);
 int		_stoi(const char *s);
 void	_sort(int *arr, int n);
 void	_swap(int *a, int *b);
-int		is_sorted(t_ds *store);
-int		is_exist(t_ds *store);
-void	push_auto(t_ds *store);
-void	compress1(t_ds *store, int cur, int i, int j);
-void	compress2(t_ds *store, int cur, int i, int j);
+void	trim(t_ds *store);
+void	fill(t_ds *store);
+void	compress(t_ds *store);
 
 #endif
