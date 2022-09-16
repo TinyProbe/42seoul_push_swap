@@ -6,12 +6,7 @@ static void	refresh(t_ds *store, int i, int j);
 
 void	trim(t_ds *store)
 {
-	int	len_a;
-	int	i;
-
-	len_a = store->len_a;
-	i = -1;
-	while (++i < len_a)
+	while (!is_sorted(store))
 	{
 		if (back(store->a) != store->arr[store->len_arr - 1]
 				&& back(store->a) > front(store->a))
@@ -51,8 +46,8 @@ static void	find_optimize(t_ds *store)
 	t_node	*b;
 	int		i;
 
-	store->dist_a = (int) 1e9;
-	store->dist_b = (int) 1e9;
+	store->dist_a = -1;
+	store->dist_b = -1;
 	b = store->b;
 	i = -1;
 	while (++i < store->len_b)
@@ -65,15 +60,17 @@ static void	find_optimize(t_ds *store)
 static void find_soc(t_ds *store, t_node *b, int i)
 {
 	t_node	*a;
-	int		i;
+	int		j;
 
 	a = store->a;
 	j = -1;
 	while (++j < store->len_a)
 	{
 		if (back(a) > front(a))
+		{
 			if ((front(b) > back(a)) || (front(b) < front(a)))
 				refresh(store, i, j);
+		}
 		else
 			if ((front(b) > back(a)) && (front(b) < front(a)))
 				refresh(store, i, j);
@@ -83,7 +80,12 @@ static void find_soc(t_ds *store, t_node *b, int i)
 
 static void	refresh(t_ds *store, int i, int j)
 {
-	if (_min(store->dist_a, store->len_a - store->dist_a)
+	if (store->dist_a == -1)
+	{
+		store->dist_a = j;
+		store->dist_b = i;
+	}
+	else if (_min(store->dist_a, store->len_a - store->dist_a)
 			+ _min(store->dist_b, store->len_b - store->dist_b)
 			> _min(i, store->len_b - i)
 			+ _min(j, store->len_a - j))

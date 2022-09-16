@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 
 	if (extract(argc, argv, &store))
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		release(&store);
 		return (-1);
 	}
@@ -36,6 +36,7 @@ static void	sort(t_ds *store)
 {
 	trim(store);
 	organize(store);
+	init(store);
 	//compress(store);
 }
 

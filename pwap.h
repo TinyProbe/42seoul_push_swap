@@ -37,6 +37,8 @@ typedef struct s_ds
 
 void		input(int argc, char **argv, t_ds *store);
 void		pre_sort(t_ds *store);
+int			is_sorted(t_ds *store);
+void		init(t_ds *store);
 int			valid1(int argc, char **argv);
 int			valid1_1(char *s);
 int			valid2(t_ds *store);
