@@ -12,6 +12,7 @@ SRC_M		= command.c			\
 			  pwap2.c			\
 			  sort.c			\
 			  utils.c			\
+			  utils2.c			\
 			  valid.c			\
 
 SRC_B		= checker_bonus.c	\

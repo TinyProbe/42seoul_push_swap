@@ -1,33 +1,94 @@
 #include "pwap.h"
 
+static void	find_optimize(t_ds *store);
+static void find_soc(t_ds *store, t_node *b, int i);
+static void	refresh(t_ds *store, int i, int j);
+
 void	trim(t_ds *store)
 {
+	int	len_a;
+	int	i;
 
-}
-
-void	fill(t_ds *store)
-{
-
-}
-
-/*
-void	push_auto(t_ds *store)
-{
-	while (1)
+	len_a = store->len_a;
+	i = -1;
+	while (++i < len_a)
 	{
-		if (back(store->a) == store->arr[store->len_arr - 1]
-				&& front(store->b) < front(store->a))
-		{
-			push_a(store);
-			return ;
-		}
-		else if (back(store->a) != store->arr[store->len_arr - 1]
-				&& front(store->b) > back(store->a) && front(store->b) < front(store->a))
-		{
-			push_a(store);
-			return ;
-		}
-		rotate_b(store);
+		if (back(store->a) != store->arr[store->len_arr - 1]
+				&& back(store->a) > front(store->a))
+			push_b(store);
+		else
+			rotate_a(store);
 	}
 }
- * */
+
+void	organize(t_ds *store)
+{
+	int	i;
+
+	while (store->len_b)
+	{
+		find_optimize(store);
+		i = -1;
+		if (store->dist_a < store->len_a - store->dist_a)
+			while (++i < store->dist_a)
+				rotate_a(store);
+		else
+			while (++i < store->len_a - store->dist_a)
+				rerotate_a(store);
+		i = -1;
+		if (store->dist_b < store->len_b - store->dist_b)
+			while (++i < store->dist_b)
+				rotate_b(store);
+		else
+			while (++i < store->len_b - store->dist_b)
+				rerotate_b(store);
+		push_a(store);
+	}
+}
+
+static void	find_optimize(t_ds *store)
+{
+	t_node	*b;
+	int		i;
+
+	store->dist_a = (int) 1e9;
+	store->dist_b = (int) 1e9;
+	b = store->b;
+	i = -1;
+	while (++i < store->len_b)
+	{
+		find_soc(store, b, i);
+		b = b->right;
+	}
+}
+
+static void find_soc(t_ds *store, t_node *b, int i)
+{
+	t_node	*a;
+	int		i;
+
+	a = store->a;
+	j = -1;
+	while (++j < store->len_a)
+	{
+		if (back(a) > front(a))
+			if ((front(b) > back(a)) || (front(b) < front(a)))
+				refresh(store, i, j);
+		else
+			if ((front(b) > back(a)) && (front(b) < front(a)))
+				refresh(store, i, j);
+		a = a->right;
+	}
+}
+
+static void	refresh(t_ds *store, int i, int j)
+{
+	if (_min(store->dist_a, store->len_a - store->dist_a)
+			+ _min(store->dist_b, store->len_b - store->dist_b)
+			> _min(i, store->len_b - i)
+			+ _min(j, store->len_a - j))
+	{
+		store->dist_a = j;
+		store->dist_b = i;
+	}
+}

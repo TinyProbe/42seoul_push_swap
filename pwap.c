@@ -35,8 +35,8 @@ static int	extract(int argc, char **argv, t_ds *store)
 static void	sort(t_ds *store)
 {
 	trim(store);
-	fill(store);
-	compress(store);
+	organize(store);
+	//compress(store);
 }
 
 static void print(t_ds *store)
