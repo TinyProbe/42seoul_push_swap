@@ -73,6 +73,5 @@ void		organize(t_ds *store);
 void		reflect(t_ds *store);
 int			is_sorted(t_ds *store);
 void		init(t_ds *store);
-//void		compress(t_ds *store);
 
 #endif

@@ -72,11 +72,8 @@ static void print(t_ds *store, int i)
 
 static void release(t_ds *store)
 {
-	int	i;
-
-	i = -1;
-	while (++i < store->ac)
-		free(store->av[i]);
+	while (store->ac--)
+		free(store->av[store->ac]);
 	while (store->a)
 		pop_back(&(store->a));
 	while (store->b)
