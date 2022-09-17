@@ -11,7 +11,10 @@ int	parse(int argc, char **argv, t_ds *store)
 	{
 		strs = ft_split(argv[i], ' ');
 		if (!(*strs))
+		{
+			free(strs);
 			return (-1);
+		}
 		j = -1;
 		while (strs[++j])
 			store->av[store->ac++] = strs[j];

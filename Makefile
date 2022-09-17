@@ -5,7 +5,6 @@ CFLAG		= -Wall -Wextra -Werror
 OBJFLAG		= -c
 SRC_M		= command.c			\
 			  command2.c		\
-			  compress.c		\
 			  list.c			\
 			  list2.c			\
 			  pwap.c			\
@@ -18,16 +17,16 @@ SRC_M		= command.c			\
 
 SRC_B		= checker_bonus.c	\
 
-LIB			= ./libft/libft.a
+LIB			= libft/libft.a
 RM			= rm -f
 
-$(NAME) :	$(LIB)
+$(NAME) :	$(LIB) $(SRC_M)
 	$(CC) $(SRC_M) $(LIB) -o $(NAME)
 
 $(LIB) :
 	make -C ./libft bonus
 
-$(BONUS) :	$(OBJ_B)
+$(BONUS) :	$(SRC_B)
 	$(CC) $(SRC_B) -o $(BONUS)
 
 all :		$(NAME)
