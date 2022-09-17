@@ -38,22 +38,15 @@ static void	common_rotate(t_ds *store, int *dir, int *dist)
 
 	if (dir[0] == dir[1])
 	{
+		tmp = _min(dist[0], dist[1]);
+		dist[0] -= tmp;
+		dist[1] -= tmp;
 		if (dir[0] == 1)
-		{
-			tmp = _min(dist[0], dist[1]);
-			dist[0] -= tmp;
-			dist[1] -= tmp;
 			while (tmp--)
 				rotate_r(store);
-		}
 		else
-		{
-			tmp = _min(dist[0], dist[1]);
-			dist[0] -= tmp;
-			dist[1] -= tmp;
 			while (tmp--)
 				rerotate_r(store);
-		}
 	}
 }
 
