@@ -1,33 +1,38 @@
 #include "pwap.h"
 
-int	valid1(int argc, char **argv)
+static int	valid1_1(char *s);
+
+int	valid1(t_ds *store)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (++i < argc)
+	i = -1;
+	while (++i < store->ac)
 	{
-		j = -(argv[i][j] != '-');
-		while (argv[i][++j])
-			if (argv[i][j] < '0' || argv[i][j] > '9')
+		j = 0;
+		if (store->av[i][j] != '-' && store->av[i][j] != '+')
+			--j;
+		while (store->av[i][++j])
+			if (store->av[i][j] < '0' || store->av[i][j] > '9')
 				return (-1);
-		if (valid1_1(argv[i]))
+		if (valid1_1(store->av[i]))
 			return (-2);
 	}
 	return (0);
 }
 
-int	valid1_1(char *s)
+static int	valid1_1(char *s)
 {
 	const char	*rng;
 	int			len;
 
 	rng = "2147483647";
-	if (*s == '-' && ++s)
-		rng = "2147483648";
-	len = _strlen(s);
-	if (len > 10 || (len == 10 && _memcmp(s, rng, 10) > 0))
+	if (*s == '+' || *s == '-')
+		if (*s++ == '-')
+			rng = "2147483648";
+	len = ft_strlen(s);
+	if (len > 10 || (len == 10 && ft_memcmp(s, rng, 10) > 0))
 		return (-1);
 	return (0);
 }

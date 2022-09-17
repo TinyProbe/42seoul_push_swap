@@ -39,3 +39,10 @@ void	push_b(t_ds *store)
 		store->cmd[store->len_cmd++] = PB;
 	}
 }
+
+void	rotate_r(t_ds *store)
+{
+	store->a = store->a->right;
+	store->b = store->b->right;
+	store->cmd[store->len_cmd++] = RR;
+}

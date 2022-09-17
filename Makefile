@@ -11,35 +11,38 @@ SRC_M		= command.c			\
 			  pwap.c			\
 			  pwap2.c			\
 			  sort.c			\
+			  sort2.c			\
+			  reflect.c			\
 			  utils.c			\
-			  utils2.c			\
 			  valid.c			\
 
 SRC_B		= checker_bonus.c	\
 
-OBJ_M		= $(SRC_M:.c=.o)
-OBJ_B		= $(SRC_B:.c=.o)
+LIB			= ./libft/libft.a
 RM			= rm -f
 
-%.o :		%.c
-	$(CC) $(CFLAG) $(OBJFLAG) $?
+$(NAME) :	$(LIB)
+	$(CC) $(SRC_M) $(LIB) -o $(NAME)
 
-$(NAME) :	$(OBJ_M)
-	$(CC) $(CFLAG) $(OBJ_M) -o $(NAME)
+$(LIB) :
+	make -C ./libft bonus
 
 $(BONUS) :	$(OBJ_B)
-	$(CC) $(CFLAG) $(OBJ_B) -o $(BONUS)
+	$(CC) $(SRC_B) -o $(BONUS)
 
 all :		$(NAME)
 
 bonus :		$(BONUS)
 
 clean :
-	$(RM) $(OBJ_M) $(OBJ_B)
+	make -C ./libft clean
 
 fclean :	clean
-	$(RM) $(NAME) $(BONUS)
+	$(RM) $(NAME) $(LIB) $(BONUS)
 
-re :		fclean all
+re :
+	make fclean
+	make -C ./libft bonus
+	$(CC) $(SRC_M) $(LIB) -o $(NAME)
 
 .PHONY :	all bonus clean fclean re

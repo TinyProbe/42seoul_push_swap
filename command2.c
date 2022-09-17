@@ -23,3 +23,10 @@ void	rerotate_b(t_ds *store)
 	store->b = store->b->left;
 	store->cmd[store->len_cmd++] = RRB;
 }
+
+void	rerotate_r(t_ds *store)
+{
+	store->a = store->a->left;
+	store->b = store->b->left;
+	store->cmd[store->len_cmd++] = RRR;
+}

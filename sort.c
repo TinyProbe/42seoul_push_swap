@@ -11,6 +11,11 @@ void	trim(t_ds *store)
 		if (back(store->a) != store->arr[store->len_arr - 1]
 				&& back(store->a) > front(store->a))
 			push_b(store);
+		else if (((back(store->a) != store->arr[store->len_arr - 1]
+						&& next(store->a) > back(store->a))
+					|| back(store->a) == store->arr[store->len_arr - 1])
+				&& next(store->a) < front(store->a))
+			swap_a(store);
 		else
 			rotate_a(store);
 	}
@@ -18,25 +23,10 @@ void	trim(t_ds *store)
 
 void	organize(t_ds *store)
 {
-	int	i;
-
 	while (store->len_b)
 	{
 		find_optimize(store);
-		i = -1;
-		if (store->dist_a < store->len_a - store->dist_a)
-			while (++i < store->dist_a)
-				rotate_a(store);
-		else
-			while (++i < store->len_a - store->dist_a)
-				rerotate_a(store);
-		i = -1;
-		if (store->dist_b < store->len_b - store->dist_b)
-			while (++i < store->dist_b)
-				rotate_b(store);
-		else
-			while (++i < store->len_b - store->dist_b)
-				rerotate_b(store);
+		reflect(store);
 		push_a(store);
 	}
 }

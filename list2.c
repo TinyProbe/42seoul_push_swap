@@ -9,3 +9,8 @@ int	back(t_node *head)
 {
 	return (head->left->data);
 }
+
+int	next(t_node *head)
+{
+	return (head->right->data);
+}
