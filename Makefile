@@ -26,8 +26,8 @@ $(NAME) :	$(LIB) $(SRC_M)
 $(LIB) :
 	make -C ./libft bonus
 
-$(BONUS) :	$(SRC_B)
-	$(CC) $(SRC_B) -o $(BONUS)
+$(BONUS) :	$(LIB) $(SRC_B)
+	$(CC) $(SRC_B) $(LIB) -o $(BONUS)
 
 all :		$(NAME)
 
