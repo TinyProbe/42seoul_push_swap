@@ -34,7 +34,7 @@ $(BONUS) :	$(LIB) $(SRC_B)
 	$(CC) $(SRC_B) $(LIB) -o $(BONUS)
 
 $(LIB) :
-	make -C ./libft bonus
+	make -C ./libft B=1 all
 
 all :		$(NAME)
 
@@ -44,11 +44,8 @@ clean :
 	make -C ./libft clean
 
 fclean :	clean
-	$(RM) $(NAME) $(BONUS) $(LIB)
+	$(RM) $(LIB) $(NAME) $(BONUS)
 
-re :
-	make fclean
-	make -C ./libft bonus
-	$(CC) $(SRC_M) $(LIB) -o $(NAME)
+re :		fclean all
 
 .PHONY :	all bonus clean fclean re
