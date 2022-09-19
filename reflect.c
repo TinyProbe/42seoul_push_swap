@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reflect.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 15:52:04 by tkong             #+#    #+#             */
+/*   Updated: 2022/09/19 15:54:33 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pwap.h"
 
 static void	calc(t_ds *store, int *dir, int *dist);
@@ -7,7 +19,7 @@ static void	indiv_rotate(t_ds *store, int *dir, int *dist);
 void	reflect(t_ds *store)
 {
 	int	dir[2];
-	int dist[2];
+	int	dist[2];
 
 	calc(store, dir, dist);
 	common_rotate(store, dir, dist);

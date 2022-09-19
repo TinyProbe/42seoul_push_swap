@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pwap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 15:52:02 by tkong             #+#    #+#             */
+/*   Updated: 2022/09/19 15:54:20 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pwap.h"
 
 static int	extract(int argc, char **argv, t_ds *store);
 static void	sort(t_ds *store);
-static void print(t_ds *store, int i);
-static void release(t_ds *store);
+static void	print(t_ds *store, int i);
+static void	release(t_ds *store);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	static t_ds	store;
 
@@ -41,7 +53,7 @@ static void	sort(t_ds *store)
 	init(store);
 }
 
-static void print(t_ds *store, int i)
+static void	print(t_ds *store, int i)
 {
 	while (++i < store->len_cmd)
 	{
@@ -70,7 +82,7 @@ static void print(t_ds *store, int i)
 	}
 }
 
-static void release(t_ds *store)
+static void	release(t_ds *store)
 {
 	while (store->ac--)
 		free(store->av[store->ac]);

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 15:51:41 by tkong             #+#    #+#             */
+/*   Updated: 2022/09/19 15:53:29 by tkong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker_bonus.h"
 
 static int	extract(int argc, char **argv, t_ds *store);
 static int	sort(t_ds *store);
 static int	sort2(t_ds *store, int *i);
-static void release(t_ds *store);
+static void	release(t_ds *store);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	static t_ds	store;
 
@@ -60,7 +72,7 @@ static int	sort(t_ds *store)
 	return (0);
 }
 
-static int sort2(t_ds *store, int *i)
+static int	sort2(t_ds *store, int *i)
 {
 	if (ft_strnstr(store->buf + *i, "ra\n", 3))
 		rotate_a(store, i);
@@ -79,7 +91,7 @@ static int sort2(t_ds *store, int *i)
 	return (0);
 }
 
-static void release(t_ds *store)
+static void	release(t_ds *store)
 {
 	while (store->ac--)
 		free(store->av[store->ac]);
