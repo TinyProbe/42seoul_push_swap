@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 15:51:41 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/19 15:53:29 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/19 17:49:14 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 {
 	static t_ds	store;
 
+	if (argc <= 1)
+		return (0);
 	if (extract(argc, argv, &store))
 	{
 		write(2, "Error\n", 6);
