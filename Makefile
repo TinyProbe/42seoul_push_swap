@@ -27,6 +27,7 @@ SRC_B		= checker_bonus.c	\
 LIB			= libft/libft.a
 RM			= rm -f
 
+
 $(NAME) :	$(LIB) $(SRC_M)
 	$(CC) $(SRC_M) $(LIB) -o $(NAME)
 
