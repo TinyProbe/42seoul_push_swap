@@ -6,7 +6,7 @@
 #    By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:30:20 by tkong             #+#    #+#              #
-#    Updated: 2022/09/21 15:30:23 by tkong            ###   ########.fr        #
+#    Updated: 2022/09/22 16:44:08 by tkong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,10 @@ LIB			= libft/libft.a
 RM			= rm -f
 
 $(NAME) :	$(LIB) $(SRC_M)
-	$(CC) $(SRC_M) $(LIB) -o $(NAME)
+	$(CC) $(CFLAG) $(SRC_M) $(LIB) -o $(NAME)
 
 $(BONUS) :	$(LIB) $(SRC_B)
-	$(CC) $(SRC_B) $(LIB) -o $(BONUS)
+	$(CC) $(CFLAG) $(SRC_B) $(LIB) -o $(BONUS)
 
 $(LIB) :
 	make -C ./libft B=1 all
